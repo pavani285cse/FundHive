@@ -1,0 +1,43 @@
+<mat-card>
+  <h2>Auctions</h2>
+
+  <table
+    mat-table
+    *ngIf="auctions$ | async as auctions"
+    [dataSource]="auctions"
+    class="mat-elevation-z1">
+    <ng-container matColumnDef="groupId">
+      <th mat-header-cell *matHeaderCellDef> Group </th>
+      <td mat-cell *matCellDef="let a"> {{ a.groupId }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="month">
+      <th mat-header-cell *matHeaderCellDef> Month </th>
+      <td mat-cell *matCellDef="let a"> {{ a.month }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="auctionDate">
+      <th mat-header-cell *matHeaderCellDef> Date </th>
+      <td mat-cell *matCellDef="let a"> {{ a.auctionDate | date }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="winnerMemberId">
+      <th mat-header-cell *matHeaderCellDef> Winner </th>
+      <td mat-cell *matCellDef="let a"> Member #{{ a.winnerMemberId }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="bidAmount">
+      <th mat-header-cell *matHeaderCellDef> Bid </th>
+      <td mat-cell *matCellDef="let a"> {{ a.bidAmount | currency:'INR' }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="prizeAmount">
+      <th mat-header-cell *matHeaderCellDef> Prize </th>
+      <td mat-cell *matCellDef="let a"> {{ a.prizeAmount | currency:'INR' }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-card>
+

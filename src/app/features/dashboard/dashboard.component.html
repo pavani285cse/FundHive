@@ -1,0 +1,106 @@
+<section class="dashboard">
+  @if (summary$ | async; as summary) {
+    <div class="summary-grid">
+      <!-- Total Chit Groups Card -->
+      <mat-card class="summary-card">
+        <div class="card-content">
+          <div class="card-icon groups-icon">
+            <mat-icon>groups</mat-icon>
+          </div>
+          <div class="card-info">
+            <h3>Total Chit Groups</h3>
+            <p class="card-value">{{ summary.totalGroups }}</p>
+          </div>
+        </div>
+      </mat-card>
+
+      <!-- Total Members Card -->
+      <mat-card class="summary-card">
+        <div class="card-content">
+          <div class="card-icon members-icon">
+            <mat-icon>people</mat-icon>
+          </div>
+          <div class="card-info">
+            <h3>Total Members</h3>
+            <p class="card-value">{{ summary.totalMembers }}</p>
+          </div>
+        </div>
+      </mat-card>
+
+      <!-- Monthly Collection Amount Card -->
+      <mat-card class="summary-card">
+        <div class="card-content">
+          <div class="card-icon collection-icon">
+            <mat-icon>account_balance_wallet</mat-icon>
+          </div>
+          <div class="card-info">
+            <h3>Monthly Collection</h3>
+            <p class="card-value">{{ summary.monthlyCollectionAmount | currency:'INR' }}</p>
+          </div>
+        </div>
+      </mat-card>
+
+      <!-- Pending Payments Card -->
+      <mat-card class="summary-card">
+        <div class="card-content">
+          <div class="card-icon pending-icon">
+            <mat-icon>pending_actions</mat-icon>
+          </div>
+          <div class="card-info">
+            <h3>Pending Payments</h3>
+            <p class="card-value">{{ summary.pendingPayments | currency:'INR' }}</p>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  }
+
+  @if (loading) {
+    <div class="loading">
+      <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    </div>
+  } @else {
+    <div class="charts-grid">
+      <!-- Monthly Collections Line Chart -->
+      <mat-card class="chart-card">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon>show_chart</mat-icon>
+            Monthly Collections
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="chart-container">
+            <canvas
+              baseChart
+              [data]="monthlyCollectionsChartData"
+              [options]="lineChartOptions"
+              [type]="'line'">
+            </canvas>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <!-- Paid vs Pending Members Pie Chart -->
+      <mat-card class="chart-card">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon>pie_chart</mat-icon>
+            Paid vs Pending Members
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="chart-container">
+            <canvas
+              baseChart
+              [data]="paidVsPendingChartData"
+              [options]="pieChartOptions"
+              [type]="'pie'">
+            </canvas>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  }
+</section>
+

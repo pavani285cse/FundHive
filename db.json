@@ -1,0 +1,84 @@
+{
+  "members": [
+    {
+      "id": 1,
+      "name": "Ravi Kumar",
+      "email": "ravi@example.com",
+      "phone": "9876543210",
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "name": "Anita Sharma",
+      "email": "anita@example.com",
+      "phone": "9876501234",
+      "status": "active"
+    }
+  ],
+  "chitGroups": [
+    {
+      "id": 1,
+      "name": "Silver Chit - 1L",
+      "totalValue": 100000,
+      "durationMonths": 20,
+      "monthlyContribution": 5000,
+      "startDate": "2025-01-01",
+      "status": "running"
+    }
+  ],
+  "contributions": [
+    {
+      "id": 1,
+      "groupId": 1,
+      "memberId": 1,
+      "month": 1,
+      "amount": 5000,
+      "date": "2025-01-10",
+      "status": "paid"
+    },
+    {
+      "id": 2,
+      "groupId": 1,
+      "memberId": 2,
+      "month": 1,
+      "amount": 5000,
+      "date": "2025-01-10",
+      "status": "paid"
+    }
+  ],
+  "auctions": [
+    {
+      "id": 1,
+      "groupId": 1,
+      "month": 1,
+      "auctionDate": "2025-01-25",
+      "winnerMemberId": 1,
+      "bidAmount": 20000,
+      "prizeAmount": 80000,
+      "discount": 20000
+    }
+  ],
+  "payouts": [
+    {
+      "id": 1,
+      "groupId": 1,
+      "memberId": 1,
+      "auctionId": 1,
+      "amount": 80000,
+      "payoutDate": "2025-01-26",
+      "status": "paid"
+    }
+  ],
+  "penalties": [
+    {
+      "id": 1,
+      "groupId": 1,
+      "memberId": 2,
+      "month": 1,
+      "amount": 200,
+      "reason": "Late payment",
+      "status": "unpaid"
+    }
+  ]
+}
+

@@ -1,0 +1,20 @@
+<section class="reports">
+  <mat-card>
+    <h2>Collections vs Payouts</h2>
+    <canvas
+      baseChart
+      [data]="collectionsVsPayoutsData"
+      [type]="'bar'">
+    </canvas>
+  </mat-card>
+
+  <mat-card>
+    <h2>Penalties Breakdown</h2>
+    <canvas
+      baseChart
+      [data]="penaltiesData"
+      [type]="'pie'">
+    </canvas>
+  </mat-card>
+</section>
+
